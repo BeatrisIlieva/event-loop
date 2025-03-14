@@ -11,6 +11,10 @@
     color: inherit;
 }
 
+li {
+    display: block;
+}
+
 pre[class*='language-'] {
     padding: 0 1em !important;
     margin: 0 !important;

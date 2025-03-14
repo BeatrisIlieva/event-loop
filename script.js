@@ -12,11 +12,19 @@ function clickHandler() {
 
     return function execute() {
         console.log(logResults[currentIndex]);
+        const resultUlElement = document.querySelector('#result ul');
+        const liElement = document.createElement('li');
+
+        liElement.textContent += `${logResults[currentIndex]}`;
+
+        resultUlElement.appendChild(liElement);
         currentIndex += 1;
         console.log(currentIndex);
 
         if (currentIndex == logResults.length - 1) {
-            currentIndex = 0;
+            buttonElement.setAttribute('disabled', 'disabled');
+
+            return;
         }
     };
 }
