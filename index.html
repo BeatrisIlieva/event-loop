@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" rel="stylesheet">
-    
-    <!-- Include Prism.js JS for syntax highlighting functionality -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
     <title>Event Loop</title>
 </head>
@@ -38,31 +36,44 @@ function afterOneSecond() {
 
 function afterTwoSeconds() {
     console.log('2 second later');
-}
-            
+}    
         </code></pre>
         
-        <div class="wrapper wrapper-left">
-            <section class="section execution-stack">
-                <h2>Execution Stack</h2>
-            </section>
-        </div>
-        
-        <div class="wrapper wrapper-center">
-            <section class="section event-loop">
-                <h2>Event Loop</h2>
-            </section>
-        </div>
-        
-        <div class="wrapper wrapper-right">
-            <section class="section browser-api">
-                <h2>Browser API</h2>
-            </section>
-            
-            <section class="section event-queue">
-                <h2>Event Queue</h2>
-            </section>
+        <div class="boxes-wrapper">
+            <div class="wrapper-top">
+                <div class="wrapper wrapper-left">
+                    <section class="section execution-stack">
+                        <h2>Execution Stack</h2>
+                    </section>
+                </div>
+                
+                <div class="wrapper wrapper-center">
+                    <button>Start</button>
+                    <div id="result">
+                        <h3>Result:</h3>
+                    </div>
+                    <section class="section event-loop">
+                        <h2>Event Loop</h2>
+                        <div class="wrapper">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </section>
+                </div>
+                
+                <div class="wrapper wrapper-right">
+                    <section class="section browser-api">
+                        <h2>Browser API</h2>
+                    </section>
+                    
+                    <section class="section event-queue">
+                        <h2>Event Queue</h2>
+                    </section>
+                </div>
+            </div>
+            <p>text</p>
         </div>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
