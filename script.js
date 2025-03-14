@@ -7,22 +7,30 @@ const logResults = [
     '1 second later'
 ];
 
+const contextsElement = document.getElementById('contexts');
+
 function clickHandler() {
     let currentIndex = 0;
 
     return function execute() {
-        console.log(logResults[currentIndex]);
         const resultUlElement = document.querySelector('#result ul');
-        const liElement = document.createElement('li');
 
-        liElement.textContent += `${logResults[currentIndex]}`;
+        resultUlElement.append(createLiElement(currentIndex));
 
-        resultUlElement.appendChild(liElement);
+        const lastContext = contextsElement.lastElementChild;
+
+        lastContext.remove();
+
         currentIndex += 1;
-        console.log(currentIndex);
+
+        if (currentIndex != 0) {
+            buttonElement.textContent = 'Next';
+        }
 
         if (currentIndex == logResults.length - 1) {
             buttonElement.setAttribute('disabled', 'disabled');
+
+            buttonElement.textContent = 'End';
 
             return;
         }
@@ -33,3 +41,11 @@ const execute = clickHandler();
 
 const buttonElement = document.querySelector('button');
 buttonElement.addEventListener('click', execute);
+
+function createLiElement(currentIndex) {
+    const liElement = document.createElement('li');
+
+    liElement.textContent += `${logResults[currentIndex]}`;
+
+    return liElement;
+}

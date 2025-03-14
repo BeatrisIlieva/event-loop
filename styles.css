@@ -141,3 +141,17 @@ pre {
     color: blue;
     border: 0.1em solid #000;
 }
+
+#contexts {
+    display: flex;
+    flex-direction: column;
+}
+
+.execution-stack {
+    display: flex;
+    flex-direction: column;
+}
+
+.execution-stack h2 {
+    margin-bottom: auto;
+}
