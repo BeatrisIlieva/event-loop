@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" rel="stylesheet">
+    
+    <!-- Include Prism.js JS for syntax highlighting functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <title>Event Loop</title>
+</head>
+<body>
+    <main>
+        
+        <pre><code class="language-javascript">
+console.log('Start');
+
+setTimeout(function () {
+    setTimeout(function () {
+        console.log('0 seconds later');
+    }, 0);
+
+    afterOneSecond();
+
+    console.log('3 seconds later');
+}, 3000);
+
+console.log('End');
+
+function afterOneSecond() {
+    setTimeout(function () {
+        console.log('1 second later');
+    }, 1000);
+
+    afterTwoSeconds();
+}
+
+function afterTwoSeconds() {
+    console.log('2 second later');
+}
+            
+        </code></pre>
+        
+        <div class="wrapper wrapper-left">
+            <section class="section execution-stack">
+                <h2>Execution Stack</h2>
+            </section>
+        </div>
+        
+        <div class="wrapper wrapper-center">
+            <section class="section event-loop">
+                <h2>Event Loop</h2>
+            </section>
+        </div>
+        
+        <div class="wrapper wrapper-right">
+            <section class="section browser-api">
+                <h2>Browser API</h2>
+            </section>
+            
+            <section class="section event-queue">
+                <h2>Event Queue</h2>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
