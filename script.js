@@ -33,7 +33,10 @@ const actions = {
     11: eleventhAction,
     12: twelfthAction,
     13: thirteenthAction,
-    14: fourteenthAction
+    14: fourteenthAction,
+    15: fifteenthAction,
+    16: sixteenthAction,
+    17: seventeenthAction
 };
 
 function clickHandler() {
@@ -164,21 +167,6 @@ function tenthAction() {
     userActionButtonElement.textContent = 'Execute';
 }
 
-// function eleventhAction() {
-//     updateResult(2);
-
-//     removeFromCallstack();
-
-//     userActionButtonElement.textContent = 'Execute';
-
-// }
-
-// function tenthAction() {
-//     moveToCallstack();
-
-//     userActionButtonElement.textContent = 'Move to Callstack';
-// }
-
 function eleventhAction() {
     updateResult(2);
 
@@ -215,6 +203,25 @@ function fourteenthAction() {
     firstContext.remove();
 
     userActionButtonElement.textContent = 'Execute';
+}
+
+function fifteenthAction() {
+    updateResult(4);
+
+    removeFromCallstack();
+
+    userActionButtonElement.textContent = 'Move to Callstack';
+}
+
+function sixteenthAction() {
+    moveToCallstack();
+
+    userActionButtonElement.textContent = 'Execute';
+}
+
+function seventeenthAction() {
+    updateResult(5);
+    removeFromCallstack();
 }
 
 function addContentToResult(index) {
