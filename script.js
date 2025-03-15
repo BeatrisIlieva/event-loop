@@ -27,7 +27,11 @@ const actions = {
     6: sixthAction,
     7: seventhAction,
     8: eightAction,
-    9: ninthAction
+    9: ninthAction,
+    10: tenthAction,
+    11: eleventhAction,
+    12: twelfthAction,
+    13: thirteenthAction
 };
 
 function clickHandler() {
@@ -59,6 +63,12 @@ function addToCallstack(content) {
     // userActionButtonElement.textContent = 'Execute';
 }
 
+function moveToCallstack() {
+    const firstContext = eventQueueUlElement.firstElementChild;
+
+    callstackUlElement.append(firstContext);
+}
+
 function removeFromCallstack() {
     const lastContext = callstackUlElement.lastElementChild;
 
@@ -79,6 +89,12 @@ function moveToEventQueue() {
     eventQueueUlElement.append(lastContext);
 }
 
+function updateResult(index) {
+    addContentToResult(index);
+
+    removeFromCallstack();
+}
+
 function zeroAction() {
     addToCallstack(contexts[0]);
 
@@ -86,9 +102,7 @@ function zeroAction() {
 }
 
 function firstAction() {
-    addContentToResult(0);
-
-    removeFromCallstack();
+    updateResult(0);
 
     userActionButtonElement.textContent = 'Invoke';
 }
@@ -129,14 +143,36 @@ function seventhAction() {
 }
 
 function eightAction() {
-    fourthAction();
+    moveToEventQueue();
+
+    userActionButtonElement.textContent = 'Execute';
 }
 
 function ninthAction() {
-    addContentToResult(1);
+    updateResult(1);
 
-    removeFromCallstack();
+    userActionButtonElement.textContent = 'Move to Callstack';
+}
 
+function tenthAction() {
+    moveToCallstack();
+
+    userActionButtonElement.textContent = 'Execute';
+}
+
+function eleventhAction() {
+    updateResult(2);
+
+    userActionButtonElement.textContent = 'Move to Callstack';
+}
+
+function twelfthAction() {
+    moveToCallstack();
+    userActionButtonElement.textContent = 'Execute';
+}
+
+function thirteenthAction() {
+    updateResult(3);
     userActionButtonElement.textContent = 'Invoke';
 }
 
