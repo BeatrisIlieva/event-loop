@@ -15,9 +15,9 @@ function executeCode() {
 }
 
 function zeroSecondsLater() {
-    console.log('0 seconds later');
+    oneSecondLater();
 
-    return oneSecondLater();
+    return console.log('0 seconds later');
 }
 
 function oneSecondLater() {

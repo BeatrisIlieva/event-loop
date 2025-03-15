@@ -2,8 +2,8 @@ const logResults = [
     'Start',
     '3 seconds later',
     'End',
-    '0 seconds later',
     '1 second later',
+    '0 seconds later',
     '2 seconds later'
 ];
 
@@ -13,6 +13,7 @@ const contexts = [
     "console.log('2 seconds later');",
     "console.log('3 seconds later');",
     "console.log('End');",
+    'oneSecondLater();',
     "console.log('0 seconds later');",
     "console.log('1 second later');"
 ];
@@ -31,7 +32,8 @@ const actions = {
     10: tenthAction,
     11: eleventhAction,
     12: twelfthAction,
-    13: thirteenthAction
+    13: thirteenthAction,
+    14: fourteenthAction
 };
 
 function clickHandler() {
@@ -91,8 +93,6 @@ function moveToEventQueue() {
 
 function updateResult(index) {
     addContentToResult(index);
-
-    removeFromCallstack();
 }
 
 function zeroAction() {
@@ -103,6 +103,8 @@ function zeroAction() {
 
 function firstAction() {
     updateResult(0);
+
+    removeFromCallstack();
 
     userActionButtonElement.textContent = 'Invoke';
 }
@@ -151,29 +153,68 @@ function eightAction() {
 function ninthAction() {
     updateResult(1);
 
-    userActionButtonElement.textContent = 'Move to Callstack';
+    removeFromCallstack();
+
+    userActionButtonElement.textContent = 'Invoke';
 }
 
 function tenthAction() {
-    moveToCallstack();
+    addToCallstack(contexts[4]);
 
     userActionButtonElement.textContent = 'Execute';
 }
 
+// function eleventhAction() {
+//     updateResult(2);
+
+//     removeFromCallstack();
+
+//     userActionButtonElement.textContent = 'Execute';
+
+// }
+
+// function tenthAction() {
+//     moveToCallstack();
+
+//     userActionButtonElement.textContent = 'Move to Callstack';
+// }
+
 function eleventhAction() {
     updateResult(2);
+
+    removeFromCallstack();
 
     userActionButtonElement.textContent = 'Move to Callstack';
 }
 
 function twelfthAction() {
+    // removeFromCallstack();
+
     moveToCallstack();
     userActionButtonElement.textContent = 'Execute';
 }
 
 function thirteenthAction() {
+    // updateResult(4);
+
+    // updateResult(3);
+
+    callstackUlElement.prepend(createContextElement(contexts[5]));
+
+    // removeFromCallstack();
+
+    // addToCallstack(contexts[4]);
+}
+
+function fourteenthAction() {
     updateResult(3);
-    userActionButtonElement.textContent = 'Invoke';
+
+    // removeFromCallstack();
+
+    const firstContext = callstackUlElement.firstElementChild;
+    firstContext.remove();
+
+    userActionButtonElement.textContent = 'Execute';
 }
 
 function addContentToResult(index) {
@@ -222,9 +263,9 @@ codeElement.textContent = `function executeCode() {
 }
 
 function zeroSecondsLater() {
-    console.log('0 seconds later');
+    oneSecondLater();
 
-    return oneSecondLater();
+    return console.log('0 seconds later');
 }
 
 function oneSecondLater() {
@@ -232,6 +273,7 @@ function oneSecondLater() {
 }
 
 executeCode();
+
 `;
 
 Prism.highlightElement(codeElement);
