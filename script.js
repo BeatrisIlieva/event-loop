@@ -64,6 +64,17 @@ const eventQueueUlElement = document.querySelector('.event-queue ul');
 const containerLoopElement =
     document.querySelector('.container-loop');
 
+document.addEventListener('click', () => {
+    const callstackUlElementLength =
+        callstackUlElement.querySelectorAll('li').length;
+
+    if (callstackUlElementLength > 0) {
+        containerLoopElement.classList.add('rotated');
+    } else {
+        containerLoopElement.classList.remove('rotated');
+    }
+});
+
 function addToCallstack(content) {
     callstackUlElement.append(createContextElement(content));
 }
@@ -100,8 +111,6 @@ function zeroAction() {
     addToCallstack(contexts[0]);
 
     userActionButtonElement.textContent = 'Execute';
-
-    containerLoopElement.classList.add('rotated');
 }
 
 function firstAction() {
@@ -173,16 +182,12 @@ function eleventhAction() {
     removeFromCallstack();
 
     userActionButtonElement.textContent = 'Move to Callstack';
-
-    containerLoopElement.classList.remove('rotated');
 }
 
 function twelfthAction() {
     moveToCallstack();
 
     userActionButtonElement.textContent = 'Execute';
-
-    containerLoopElement.classList.add('rotated');
 }
 
 function thirteenthAction() {
@@ -204,16 +209,12 @@ function fifteenthAction() {
     removeFromCallstack();
 
     userActionButtonElement.textContent = 'Move to Callstack';
-
-    containerLoopElement.classList.add('rotated');
 }
 
 function sixteenthAction() {
     moveToCallstack();
 
     userActionButtonElement.textContent = 'Execute';
-
-    containerLoopElement.classList.remove('rotated');
 }
 
 function seventeenthAction() {
