@@ -49,6 +49,7 @@ main {
 
 section {
     background: lightcyan;
+    padding: 1em;
 }
 
 .outer-wrapper {
@@ -87,6 +88,10 @@ section {
     gap: 2em;
     justify-content: center;
     transform: rotate(90deg);
+}
+
+.container-loop.rotated {
+    transform: rotate(180deg);
 }
 
 .container-loop div {

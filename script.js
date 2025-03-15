@@ -61,6 +61,8 @@ const callstackUlElement = document.querySelector('.callstack ul');
 const resultUlElement = document.querySelector('.user-action ul');
 const browserApiUlElement = document.querySelector('.browser-api ul');
 const eventQueueUlElement = document.querySelector('.event-queue ul');
+const containerLoopElement =
+    document.querySelector('.container-loop');
 
 function addToCallstack(content) {
     callstackUlElement.append(createContextElement(content));
@@ -98,6 +100,8 @@ function zeroAction() {
     addToCallstack(contexts[0]);
 
     userActionButtonElement.textContent = 'Execute';
+
+    containerLoopElement.classList.add('rotated');
 }
 
 function firstAction() {
@@ -169,11 +173,16 @@ function eleventhAction() {
     removeFromCallstack();
 
     userActionButtonElement.textContent = 'Move to Callstack';
+
+    containerLoopElement.classList.remove('rotated');
 }
 
 function twelfthAction() {
     moveToCallstack();
+
     userActionButtonElement.textContent = 'Execute';
+
+    containerLoopElement.classList.add('rotated');
 }
 
 function thirteenthAction() {
@@ -195,12 +204,16 @@ function fifteenthAction() {
     removeFromCallstack();
 
     userActionButtonElement.textContent = 'Move to Callstack';
+
+    containerLoopElement.classList.add('rotated');
 }
 
 function sixteenthAction() {
     moveToCallstack();
 
     userActionButtonElement.textContent = 'Execute';
+
+    containerLoopElement.classList.remove('rotated');
 }
 
 function seventeenthAction() {
@@ -211,7 +224,7 @@ function seventeenthAction() {
 function addContentToResult(index) {
     const liElement = document.createElement('li');
     liElement.textContent = logResults[index];
-    
+
     resultUlElement.append(liElement);
 }
 
