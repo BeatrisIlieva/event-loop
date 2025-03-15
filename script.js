@@ -21,7 +21,13 @@ const actions = {
     0: zeroAction,
     1: firstAction,
     2: secondAction,
-    3: thirdAction
+    3: thirdAction,
+    4: fourthAction,
+    5: fifthAction,
+    6: sixthAction,
+    7: seventhAction,
+    8: eightAction,
+    9: ninthAction
 };
 
 function clickHandler() {
@@ -45,9 +51,36 @@ userActionButtonElement.addEventListener('click', execute);
 const callstackUlElement = document.querySelector('.callstack ul');
 const resultUlElement = document.querySelector('.user-action ul');
 const browserApiUlElement = document.querySelector('.browser-api ul');
+const eventQueueUlElement = document.querySelector('.event-queue ul');
+
+function addToCallstack(content) {
+    callstackUlElement.append(createContextElement(content));
+
+    // userActionButtonElement.textContent = 'Execute';
+}
+
+function removeFromCallstack() {
+    const lastContext = callstackUlElement.lastElementChild;
+
+    lastContext.remove();
+}
+
+function moveToBrowserApi() {
+    const lastContext = callstackUlElement.lastElementChild;
+
+    browserApiUlElement.append(lastContext);
+
+    // userActionButtonElement.textContent = 'Move to Event Queue';
+}
+
+function moveToEventQueue() {
+    const lastContext = browserApiUlElement.firstElementChild;
+
+    eventQueueUlElement.append(lastContext);
+}
 
 function zeroAction() {
-    addContentToCallstack(contexts[0]);
+    addToCallstack(contexts[0]);
 
     userActionButtonElement.textContent = 'Execute';
 }
@@ -55,42 +88,62 @@ function zeroAction() {
 function firstAction() {
     addContentToResult(0);
 
-    removeContentFromCallstack();
+    removeFromCallstack();
 
     userActionButtonElement.textContent = 'Invoke';
 }
 
 function secondAction() {
-    addContentToCallstack(contexts[1]);
+    addToCallstack(contexts[1]);
 
     userActionButtonElement.textContent = 'Delegate to Browser';
 }
 
 function thirdAction() {
-    addContentToBrowserApi(contexts[1]);
-
-    removeContentFromCallstack();
+    moveToBrowserApi();
 
     userActionButtonElement.textContent = 'Move to Event Queue';
 }
 
-function addContentToCallstack(content) {
-    callstackUlElement.append(createContextElement(content));
+function fourthAction() {
+    moveToEventQueue();
+
+    userActionButtonElement.textContent = 'Invoke';
 }
 
-function removeContentFromCallstack() {
-    const lastContext = callstackUlElement.lastElementChild;
-    lastContext.remove();
+function fifthAction() {
+    addToCallstack(contexts[2]);
+
+    userActionButtonElement.textContent = 'Delegate to Browser';
+}
+
+function sixthAction() {
+    moveToBrowserApi();
+
+    userActionButtonElement.textContent = 'Invoke';
+}
+
+function seventhAction() {
+    addToCallstack(contexts[3]);
+    userActionButtonElement.textContent = 'Move to Event Queue';
+}
+
+function eightAction() {
+    fourthAction();
+}
+
+function ninthAction() {
+    addContentToResult(1);
+
+    removeFromCallstack();
+
+    userActionButtonElement.textContent = 'Invoke';
 }
 
 function addContentToResult(index) {
     const liElement = document.createElement('li');
     liElement.textContent = logResults[index];
     resultUlElement.append(liElement);
-}
-
-function addContentToBrowserApi(content) {
-    browserApiUlElement.append(createContextElement(content));
 }
 
 function createContextElement(content) {
