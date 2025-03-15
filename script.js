@@ -64,8 +64,6 @@ const eventQueueUlElement = document.querySelector('.event-queue ul');
 
 function addToCallstack(content) {
     callstackUlElement.append(createContextElement(content));
-
-    // userActionButtonElement.textContent = 'Execute';
 }
 
 function moveToCallstack() {
@@ -84,8 +82,6 @@ function moveToBrowserApi() {
     const lastContext = callstackUlElement.lastElementChild;
 
     browserApiUlElement.append(lastContext);
-
-    // userActionButtonElement.textContent = 'Move to Event Queue';
 }
 
 function moveToEventQueue() {
@@ -176,28 +172,16 @@ function eleventhAction() {
 }
 
 function twelfthAction() {
-    // removeFromCallstack();
-
     moveToCallstack();
     userActionButtonElement.textContent = 'Execute';
 }
 
 function thirteenthAction() {
-    // updateResult(4);
-
-    // updateResult(3);
-
     callstackUlElement.prepend(createContextElement(contexts[5]));
-
-    // removeFromCallstack();
-
-    // addToCallstack(contexts[4]);
 }
 
 function fourteenthAction() {
     updateResult(3);
-
-    // removeFromCallstack();
 
     const firstContext = callstackUlElement.firstElementChild;
     firstContext.remove();
@@ -227,6 +211,7 @@ function seventeenthAction() {
 function addContentToResult(index) {
     const liElement = document.createElement('li');
     liElement.textContent = logResults[index];
+    
     resultUlElement.append(liElement);
 }
 
