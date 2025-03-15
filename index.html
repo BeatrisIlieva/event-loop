@@ -10,74 +10,43 @@
 </head>
 <body>
     <main>
-        
-        <pre><code class="language-javascript">
-console.log('Start');
-
-setTimeout(function () {
-    setTimeout(function () {
-        console.log('0 seconds later');
-    }, 0);
-
-    afterOneSecond();
-
-    console.log('3 seconds later');
-}, 3000);
-
-console.log('End');
-
-function afterOneSecond() {
-    setTimeout(function () {
-        console.log('1 second later');
-    }, 1000);
-
-    afterTwoSeconds();
-}
-
-function afterTwoSeconds() {
-    console.log('2 second later');
-}    
-</code></pre>
-        
-        <div class="boxes-wrapper">
-            <div class="wrapper-top">
-                <div class="wrapper wrapper-left">
-                    <section class="section execution-stack">
-                        <h2>Execution Stack</h2>
-                        <ul id="contexts">
-                            <li>
-                                <pre><code class="language-javascript">console.log('Start');</code></pre>
-                            </li>
-                        </ul>
-                    </section>
-                </div>
+        <pre><code class="language-javascript"></code></pre>
+        <div class="outer-wrapper">
+            <div class="inner-wrapper">
+                <section class="callstack">
+                    <h2>Callstack</h2>
+                    
+                    <ul></ul>
+                </section>
                 
-                <div class="wrapper wrapper-center">
-                    <button>Start</button>
-                    <div id="result">
-                        <h3>Result:</h3>
-                        <ul></ul>
+                <div class="container-middle">
+                    <div class="user-action">
+                        <button>Invoke</button>
+
+                        <ul id="result"></ul>
                     </div>
-                    <section class="section event-loop">
+
+                    <section class="event-loop">
                         <h2>Event Loop</h2>
-                        <div class="wrapper">
+
+                        <div class="container-loop">
                             <div></div>
                             <div></div>
                         </div>
                     </section>
                 </div>
                 
-                <div class="wrapper wrapper-right">
-                    <section class="section browser-api">
+                <div class="container-right">
+                    <section class="browser-api">
                         <h2>Browser API</h2>
                     </section>
                     
-                    <section class="section event-queue">
+                    <section class="event-queue">
                         <h2>Event Queue</h2>
                     </section>
                 </div>
             </div>
-            <p>text</p>
+            <p>Explanation</p>
         </div>
     </main>
     <script src="script.js"></script>
