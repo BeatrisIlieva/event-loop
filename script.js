@@ -20,7 +20,8 @@ const contexts = [
 const actions = {
     0: zeroAction,
     1: firstAction,
-    2: thirdAction
+    2: secondAction,
+    3: thirdAction
 };
 
 function clickHandler() {
@@ -42,7 +43,8 @@ const userActionButtonElement = document.querySelector(
 userActionButtonElement.addEventListener('click', execute);
 
 const callstackUlElement = document.querySelector('.callstack ul');
-const resultUlElement = document.getElementById('result');
+const resultUlElement = document.querySelector('.user-action ul');
+const browserApiUlElement = document.querySelector('.browser-api ul');
 
 function zeroAction() {
     addContentToCallstack(contexts[0]);
@@ -53,13 +55,52 @@ function zeroAction() {
 function firstAction() {
     addContentToResult(0);
 
-    const lastContext = callstackUlElement.lastElementChild;
-    lastContext.remove();
+    removeContentFromCallstack();
 
     userActionButtonElement.textContent = 'Invoke';
 }
 
-function thirdAction() {}
+function secondAction() {
+    addContentToCallstack(contexts[1]);
+
+    userActionButtonElement.textContent = 'Delegate to Browser';
+}
+
+function thirdAction() {
+    addContentToBrowserApi(contexts[1]);
+
+    removeContentFromCallstack();
+
+    userActionButtonElement.textContent = 'Move to Event Queue';
+}
+
+function addContentToCallstack(content) {
+    callstackUlElement.append(createContextElement(content));
+}
+
+function removeContentFromCallstack() {
+    const lastContext = callstackUlElement.lastElementChild;
+    lastContext.remove();
+}
+
+function addContentToResult(index) {
+    const liElement = document.createElement('li');
+    liElement.textContent = logResults[index];
+    resultUlElement.append(liElement);
+}
+
+function addContentToBrowserApi(content) {
+    browserApiUlElement.append(createContextElement(content));
+}
+
+function createContextElement(content) {
+    const preElement = createPreElement(content);
+
+    const liElement = document.createElement('li');
+    liElement.append(preElement);
+
+    return liElement;
+}
 
 function createPreElement(content) {
     const codeElement = document.createElement('code');
@@ -72,21 +113,6 @@ function createPreElement(content) {
     Prism.highlightElement(codeElement);
 
     return preElement;
-}
-
-function addContentToCallstack(content) {
-    const preElement = createPreElement(content);
-
-    const liElement = document.createElement('li');
-    liElement.append(preElement);
-
-    callstackUlElement.append(liElement);
-}
-
-function addContentToResult(index) {
-    const liElement = document.createElement('li');
-    liElement.textContent = logResults[index];
-    resultUlElement.append(liElement);
 }
 
 const codeElement = document.querySelector('.language-javascript');
