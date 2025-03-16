@@ -179,13 +179,23 @@ function eighteenthAction() {
     userActionButtonElement.textContent = 'Start again';
 }
 
-document.addEventListener('click', () => {
-    const callstackUlElementLength =
-        callstackUlElement.querySelectorAll('li').length;
+function watchCallstackChildren() {
+    const observer = new MutationObserver(() => {
+        const callstackUlElementLength =
+            callstackUlElement.querySelectorAll('li').length;
 
-    if (callstackUlElementLength > 0) {
-        containerLoopElement.classList.remove('rotated');
-    } else {
-        containerLoopElement.classList.add('rotated');
-    }
-});
+        console.log(callstackUlElementLength);
+
+        if (callstackUlElementLength > 0) {
+            containerLoopElement.classList.remove('rotated');
+        } else {
+            containerLoopElement.classList.add('rotated');
+        }
+    });
+
+    observer.observe(callstackUlElement, { childList: true });
+
+    return observer;
+}
+
+watchCallstackChildren();
