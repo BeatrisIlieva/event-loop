@@ -9,23 +9,16 @@ import {
     eventQueueUlElement
 } from './elements.js';
 
-// export function addToCallstack(content) {
-//     callstackUlElement.prepend(createContextElement(content));
-// }
-
 export function addToCallstack(content) {
     const newElement = createContextElement(content);
 
-    // Set initial opacity to 0 for fade-in effect
     newElement.style.opacity = '0';
 
-    // Prepend the new element
     callstackUlElement.prepend(newElement);
 
-    // Use a short delay to allow the browser to recognize the new element
     requestAnimationFrame(() => {
-        newElement.style.transition = 'opacity 0.5s ease-in-out'; // Smooth fade-in
-        newElement.style.opacity = '1'; // Make it visible
+        newElement.style.transition = 'opacity 0.5s ease-in-out';
+        newElement.style.opacity = '1';
     });
 }
 
@@ -60,23 +53,17 @@ export function moveToCallstack() {
     });
 }
 
-// export function removeFromCallstack() {
-//     callstackUlElement.firstElementChild.remove();
-// }
-
 export function removeFromCallstack() {
     const firstElement = callstackUlElement.firstElementChild;
 
-    if (!firstElement) return; // Prevent errors if no elements exist
+    if (!firstElement) return;
 
-    // Apply fade-out transition
     firstElement.style.transition = 'opacity 0.5s ease-in-out';
     firstElement.style.opacity = '0';
 
-    // Wait for the animation to finish before removing the element
     setTimeout(() => {
         firstElement.remove();
-    }, 500); // Matches transition duration
+    }, 500);
 }
 
 export function moveToBrowserApi() {
