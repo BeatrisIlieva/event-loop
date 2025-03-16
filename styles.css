@@ -13,6 +13,8 @@
 
 li {
     display: block;
+    border: 0.1em solid #808080;
+    border-radius: 0.3em;
 }
 
 ul {
@@ -54,10 +56,16 @@ main {
     justify-content: space-between;
 }
 
+h2 {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
 .callstack,
 .browser-api,
 .event-queue {
-    padding: 1em;
+    padding: 0.8em;
     border-radius: 0.3em;
 }
 
@@ -77,7 +85,7 @@ main {
 }
 
 .callstack {
-    width: 23rem;
+    width: 22rem;
     background: #cff1fb78;
     border: 0.3em solid #cff1fb;
 }
@@ -97,7 +105,7 @@ main {
     display: flex;
     flex-direction: column;
     height: 20dvh;
-    background: #fcfdcd77;
+    background: #fcfdcd96;
     border: 0.3em solid #fcfdcd;
 }
 
@@ -120,6 +128,7 @@ main {
     gap: 2em;
     justify-content: center;
     transform: rotate(180deg);
+    transition: transform 0.6s ease-in-out;
 }
 
 .container-loop.rotated {
@@ -127,11 +136,13 @@ main {
 }
 
 .container-loop.rotated > div {
-    background: green;
+    background: #d4ea77;
+    background: linear-gradient(135deg, #d4ea77, #00c13e);
 }
 
 .container-loop div {
-    background: red;
+    background: #b50c4e;
+    background: linear-gradient(135deg, #b50c4e, #ea4600);
     width: 4em;
     height: 8em;
 }
@@ -155,4 +166,35 @@ main {
 .event-queue ul {
     display: flex;
     flex-direction: row;
+}
+
+.explanation {
+    padding: 0.8em;
+    background: #ffdbdb52;
+    flex-grow: 1;
+    border: 0.3em solid #ffdbdb;
+    border-radius: 0.3em;
+}
+
+.explanation h2 {
+    text-align: center;
+}
+
+button {
+    width: 12.5rem;
+    padding: 0.5em 0;
+    background: #d37a0d;
+    background: linear-gradient(135deg, #d37a0d, #e86400);
+    color: #fff;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    font-weight: 700;
+    transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+button:hover {
+    color: #000;
+    background: #fcbb71;
+    background: linear-gradient(135deg, #fcbb71, #db9264);
 }
