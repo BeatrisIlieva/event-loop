@@ -13,8 +13,7 @@ import {
     removeFromCallstack,
     moveToBrowserApi,
     moveToEventQueue,
-    updateResult,
-    createPreElement
+    updateResult
 } from './utils.js';
 
 import {

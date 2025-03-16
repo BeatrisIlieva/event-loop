@@ -13,141 +13,100 @@ export function addToCallstack(content) {
     callstackUlElement.prepend(createContextElement(content));
 }
 
-// export function moveToCallstack() {
-//     const firstContext = eventQueueUlElement.firstElementChild;
-
-//     callstackUlElement.append(firstContext);
-// }
-
 export function moveToCallstack() {
     const firstContext = eventQueueUlElement.firstElementChild;
 
-    if (!firstContext) return; // Prevent errors if no element exists
+    if (!firstContext) return;
 
-    // Get the current position of the element
     const rect = firstContext.getBoundingClientRect();
     const startLeft = rect.left;
     const startTop = rect.top;
 
-    // Set absolute positioning to preserve its position
     firstContext.style.position = 'absolute';
     firstContext.style.left = `${startLeft}px`;
-    firstContext.style.top = `${startTop}px`; // Prevent vertical movement
+    firstContext.style.top = `${startTop}px`;
 
-    // Append it to the document body temporarily to avoid layout shifts
     document.body.appendChild(firstContext);
 
-    // Calculate the distance to move left
-    const targetX = callstackUlElement.getBoundingClientRect().left - startLeft;
+    const targetX =
+        callstackUlElement.getBoundingClientRect().left - startLeft;
 
-    // Trigger the leftward movement animation
     requestAnimationFrame(() => {
         firstContext.classList.add('move-left');
         firstContext.style.transform = `translateX(${targetX}px)`;
     });
 
-    // After animation ends, append the element to the new parent
     firstContext.addEventListener('transitionend', () => {
         callstackUlElement.appendChild(firstContext);
-        firstContext.classList.remove('move-left'); // Remove animation class
-        firstContext.style.position = ''; // Reset position
-        firstContext.style.transform = ''; // Reset transformation
+        firstContext.classList.remove('move-left');
+        firstContext.style.position = '';
+        firstContext.style.transform = '';
     });
 }
-
 
 export function removeFromCallstack() {
     callstackUlElement.firstElementChild.remove();
 }
 
-// export function moveToBrowserApi() {
-//     browserApiUlElement.append(callstackUlElement.firstElementChild);
-// }
-
 export function moveToBrowserApi() {
     const elementToMove = callstackUlElement.firstElementChild;
 
-    // Store the initial position of the element
     const rect = elementToMove.getBoundingClientRect();
     const initialLeft = rect.left;
     const initialTop = rect.top;
 
-    // Set the element's position to absolute
     elementToMove.style.position = 'absolute';
     elementToMove.style.left = `${initialLeft}px`;
     elementToMove.style.top = `${initialTop}px`;
 
-    // Add the move-right-up class to trigger the transition
     elementToMove.classList.add('move-right-up');
 
-    // Wait for the transition to finish before moving the element
-    elementToMove.addEventListener('transitionend', function() {
-        // Move the element to the new parent
+    elementToMove.addEventListener('transitionend', function () {
         browserApiUlElement.append(elementToMove);
-        elementToMove.classList.remove('move-right-up'); // Clean up the class
-        elementToMove.style.position = ''; // Optional: reset the position property
+        elementToMove.classList.remove('move-right-up');
+        elementToMove.style.position = '';
     });
 }
-
-
-// export function moveToEventQueue() {
-//     const lastContext = browserApiUlElement.firstElementChild;
-
-//     const pattern =
-//         /setTimeout\s*\(\s*\(\s*.*?\s*\)\s*=>\s*\{([\s\S]*?)\}\s*,\s*\d+\s*\)/;
-
-//     const match = lastContext.textContent.match(pattern);
-
-//     const contextElement = createContextElement(match[1].trim());
-
-//     eventQueueUlElement.append(contextElement);
-
-//     lastContext.remove();
-// }
 
 export function moveToEventQueue() {
     const lastContext = browserApiUlElement.firstElementChild;
 
-    if (!lastContext) return; // Avoid errors if there's no element to move
+    if (!lastContext) return;
 
     const pattern =
         /setTimeout\s*\(\s*\(\s*.*?\s*\)\s*=>\s*\{([\s\S]*?)\}\s*,\s*\d+\s*\)/;
 
     const match = lastContext.textContent.match(pattern);
 
-    if (!match) return; // Avoid errors if the pattern isn't found
+    if (!match) return;
 
     const contextElement = createContextElement(match[1].trim());
 
-    // Get the current position of the element
     const rect = lastContext.getBoundingClientRect();
     const startTop = rect.top;
 
-    // Temporarily append the element to the body to preserve its absolute position
     document.body.appendChild(contextElement);
 
-    // Set absolute positioning at the original location
     contextElement.style.position = 'absolute';
     contextElement.style.top = `${startTop}px`;
     contextElement.style.left = `${rect.left}px`;
 
-    // Trigger the animation
     requestAnimationFrame(() => {
         contextElement.classList.add('move-down');
-        contextElement.style.transform = `translateY(${eventQueueUlElement.getBoundingClientRect().top - startTop}px)`;
+        contextElement.style.transform = `translateY(${
+            eventQueueUlElement.getBoundingClientRect().top - startTop
+        }px)`;
     });
 
-    // Move the element to the new parent after the animation ends
     contextElement.addEventListener('transitionend', () => {
         eventQueueUlElement.appendChild(contextElement);
         contextElement.classList.remove('move-down');
-        contextElement.style.position = ''; // Reset position
-        contextElement.style.transform = ''; // Reset transform
+        contextElement.style.position = '';
+        contextElement.style.transform = '';
     });
 
     lastContext.remove();
 }
-
 
 export function updateResult(index) {
     addContentToResult(index);
@@ -177,10 +136,9 @@ export function createPreElement(content) {
     const preElement = document.createElement('pre');
     preElement.append(codeElement);
 
-
     Prism.highlightElement(codeElement);
 
-        preElement.style.background = '#fff'
+    preElement.style.background = '#fff';
 
     return preElement;
 }
