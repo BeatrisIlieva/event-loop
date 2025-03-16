@@ -1,36 +1,22 @@
 const logResults = [
     'Start',
-    '2 seconds later',
     'End',
-    '4 second later',
-    '0 seconds later',
-    '1 second later'
+    '1 second later',
+    '2 seconds later',
+    '3 seconds later',
+    '4 seconds later'
 ];
 
-const contexts = [
-    "console.log('0 seconds later');",
-    "console.log('1 second later');"
-];
+const contexts = [];
+
+const moveToBrowserApiButtonTitle = 'Move To Browser API';
+const moveToEvenQueueButtonTitle = 'Move to Event Queue';
+const moveToCallstackButtonTitle = 'Move to Callstack';
+const executeButtonTitle = 'Execute';
+const invokeButtonTitle = 'Invoke';
 
 const actions = {
-    0: zeroAction,
-    1: firstAction,
-    2: secondAction,
-    3: thirdAction,
-    4: fourthAction,
-    5: fifthAction,
-    6: sixthAction,
-    7: seventhAction,
-    8: eightAction,
-    9: ninthAction,
-    10: tenthAction,
-    11: eleventhAction,
-    12: twelfthAction,
-    13: thirteenthAction,
-    14: fourteenthAction,
-    15: fifteenthAction,
-    16: sixteenthAction,
-    17: seventeenthAction
+    0: zeroAction
 };
 
 function clickHandler() {
@@ -69,6 +55,12 @@ document.addEventListener('click', () => {
     }
 });
 
+function zeroAction() {
+    removeFromCallstack();
+
+    userActionButtonElement.textContent = moveToBrowserApiButtonTitle;
+}
+
 function addToCallstack(content) {
     callstackUlElement.append(createContextElement(content));
 }
@@ -80,9 +72,7 @@ function moveToCallstack() {
 }
 
 function removeFromCallstack() {
-    const lastContext = callstackUlElement.lastElementChild;
-
-    lastContext.remove();
+    callstackUlElement.firstElementChild.remove();
 }
 
 function moveToBrowserApi() {
@@ -99,121 +89,6 @@ function moveToEventQueue() {
 
 function updateResult(index) {
     addContentToResult(index);
-}
-
-function zeroAction() {
-    addToCallstack(contexts[0]);
-
-    userActionButtonElement.textContent = 'Execute';
-}
-
-function firstAction() {
-    updateResult(0);
-
-    removeFromCallstack();
-
-    userActionButtonElement.textContent = 'Invoke';
-}
-
-function secondAction() {
-    addToCallstack(contexts[1]);
-
-    userActionButtonElement.textContent = 'Delegate to Browser';
-}
-
-function thirdAction() {
-    moveToBrowserApi();
-
-    userActionButtonElement.textContent = 'Move to Event Queue';
-}
-
-function fourthAction() {
-    moveToEventQueue();
-
-    userActionButtonElement.textContent = 'Invoke';
-}
-
-function fifthAction() {
-    addToCallstack(contexts[2]);
-
-    userActionButtonElement.textContent = 'Delegate to Browser';
-}
-
-function sixthAction() {
-    moveToBrowserApi();
-
-    userActionButtonElement.textContent = 'Invoke';
-}
-
-function seventhAction() {
-    addToCallstack(contexts[3]);
-    userActionButtonElement.textContent = 'Move to Event Queue';
-}
-
-function eightAction() {
-    moveToEventQueue();
-
-    userActionButtonElement.textContent = 'Execute';
-}
-
-function ninthAction() {
-    updateResult(1);
-
-    removeFromCallstack();
-
-    userActionButtonElement.textContent = 'Invoke';
-}
-
-function tenthAction() {
-    addToCallstack(contexts[4]);
-
-    userActionButtonElement.textContent = 'Execute';
-}
-
-function eleventhAction() {
-    updateResult(2);
-
-    removeFromCallstack();
-
-    userActionButtonElement.textContent = 'Move to Callstack';
-}
-
-function twelfthAction() {
-    moveToCallstack();
-
-    userActionButtonElement.textContent = 'Execute';
-}
-
-function thirteenthAction() {
-    callstackUlElement.prepend(createContextElement(contexts[5]));
-}
-
-function fourteenthAction() {
-    updateResult(3);
-
-    const firstContext = callstackUlElement.firstElementChild;
-    firstContext.remove();
-
-    userActionButtonElement.textContent = 'Execute';
-}
-
-function fifteenthAction() {
-    updateResult(4);
-
-    removeFromCallstack();
-
-    userActionButtonElement.textContent = 'Move to Callstack';
-}
-
-function sixteenthAction() {
-    moveToCallstack();
-
-    userActionButtonElement.textContent = 'Execute';
-}
-
-function seventeenthAction() {
-    updateResult(5);
-    removeFromCallstack();
 }
 
 function addContentToResult(index) {
