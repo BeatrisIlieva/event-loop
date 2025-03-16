@@ -56,8 +56,6 @@ export function moveToCallstack() {
 export function removeFromCallstack() {
     const firstElement = callstackUlElement.firstElementChild;
 
-    if (!firstElement) return;
-
     firstElement.style.transition = 'opacity 0.5s ease-in-out';
     firstElement.style.opacity = '0';
 
@@ -88,8 +86,6 @@ export function moveToBrowserApi() {
 
 export function moveToEventQueue() {
     const lastContext = browserApiUlElement.firstElementChild;
-
-    if (!lastContext) return;
 
     const pattern =
         /setTimeout\s*\(\s*\(\s*.*?\s*\)\s*=>\s*\{([\s\S]*?)\}\s*,\s*\d+\s*\)/;

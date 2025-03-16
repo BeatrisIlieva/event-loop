@@ -146,11 +146,12 @@ function thirteenthAction() {
 function fourteenthAction() {
     removeFromCallstack();
 
+    const firstElement = callstackUlElement.lastElementChild;
+    firstElement.remove();
+
     updateResult(3);
 
     userActionButtonElement.textContent = moveToCallstackButtonTitle;
-
-    removeFromCallstack();
 }
 
 function fifteenthAction() {
@@ -179,17 +180,18 @@ function eighteenthAction() {
     userActionButtonElement.textContent = 'Start again';
 }
 
+const idleElement = document.querySelector('.idle');
 function watchCallstackChildren() {
     const observer = new MutationObserver(() => {
         const callstackUlElementLength =
             callstackUlElement.querySelectorAll('li').length;
 
-        console.log(callstackUlElementLength);
-
         if (callstackUlElementLength > 0) {
             containerLoopElement.classList.remove('rotated');
+            idleElement.classList.remove('visible');
         } else {
             containerLoopElement.classList.add('rotated');
+            idleElement.classList.add('visible');
         }
     });
 
