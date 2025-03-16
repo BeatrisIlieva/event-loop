@@ -23,9 +23,35 @@ export function removeFromCallstack() {
     callstackUlElement.firstElementChild.remove();
 }
 
+// export function moveToBrowserApi() {
+//     browserApiUlElement.append(callstackUlElement.firstElementChild);
+// }
+
 export function moveToBrowserApi() {
-    browserApiUlElement.append(callstackUlElement.firstElementChild);
+    const elementToMove = callstackUlElement.firstElementChild;
+
+    // Store the initial position of the element
+    const rect = elementToMove.getBoundingClientRect();
+    const initialLeft = rect.left;
+    const initialTop = rect.top;
+
+    // Set the element's position to absolute
+    elementToMove.style.position = 'absolute';
+    elementToMove.style.left = `${initialLeft}px`;
+    elementToMove.style.top = `${initialTop}px`;
+
+    // Add the move-right-up class to trigger the transition
+    elementToMove.classList.add('move-right-up');
+
+    // Wait for the transition to finish before moving the element
+    elementToMove.addEventListener('transitionend', function() {
+        // Move the element to the new parent
+        browserApiUlElement.append(elementToMove);
+        elementToMove.classList.remove('move-right-up'); // Clean up the class
+        elementToMove.style.position = ''; // Optional: reset the position property
+    });
 }
+
 
 export function moveToEventQueue() {
     const lastContext = browserApiUlElement.firstElementChild;

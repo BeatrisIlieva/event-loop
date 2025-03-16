@@ -15,45 +15,17 @@ ul > li {
     display: block;
     outline: 0.1em solid #808080;
     border-radius: 0.3em;
+    width: fit-content !important;
 }
 
-ol li {
+ol > li {
     margin-left: 1em;
+    color: #000;
 }
 
-.user-action {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-}
-
-.result {
-    background: #ffdbdb4f;
-    margin: 1.4em 0;
-    border-radius: 0.3em;
-    flex-grow: 1;
-    padding: 0.6em;
-    border: 0.3em solid hsl(0, 100%, 93%);
-}
-
-.result h3 {
-    text-align: center;
-    font-weight: 700;
-    margin-bottom: 1em;
-    color: #4b0082;
-    text-decoration: underline;
-    text-decoration-color: #4b0082;
-    text-underline-offset: 0.18em;
-}
-
-.user-action ol {
-    gap: 0.4em;
-}
-
-.user-action li {
-    outline: none;
-    color: #4b0082;
+ol li::marker {
+    color: #3f00ff;
+    font-size: 1.1em;
 }
 
 ul {
@@ -68,11 +40,13 @@ pre[class*='language-'] {
     overflow: auto;
     font-size: 0.88em !important;
     font-weight: 800 !important;
+    width: fit-content !important;
 }
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
     border-radius: 0.3em;
+    width: fit-content !important;
 }
 
 html {
@@ -106,6 +80,7 @@ h2 {
 .event-queue {
     padding: 0.8em;
     border-radius: 0.3em;
+    position: relative;
 }
 
 .outer-wrapper {
@@ -214,6 +189,34 @@ h2 {
     flex-direction: row;
 }
 
+.user-action {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.result {
+    background: #d1d1f922;
+    margin: 1.4em 0;
+    border-radius: 0.3em;
+    flex-grow: 1;
+    padding: 0.6em;
+    border: 0.3em solid #d1d1f9;
+}
+
+.result h3 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 1em;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+.user-action ol {
+    gap: 0.4em;
+}
+
 .explanation {
     padding: 0.8em;
     background: #ffdbdb52;
@@ -229,18 +232,22 @@ h2 {
 button {
     width: 12.5rem;
     padding: 0.5em 0;
-    background: #d37a0d;
-    background: linear-gradient(135deg, #d37a0d, #e86400);
+    background-image: linear-gradient(135deg, #885bc1, #b430f2);
     color: #fff;
     border: none;
     border-radius: 0.3em;
     cursor: pointer;
     font-weight: 700;
-    transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+    transition: background-image 0.4s ease-in-out;
 }
 
 button:hover {
-    color: #000;
-    background: #fcbb71;
-    background: linear-gradient(135deg, #fcbb71, #db9264);
+    background-image: linear-gradient(135deg, #8f4fb5, #43208e);
+}
+
+.move-right-up {
+    position: absolute;
+    transition: transform 0.6s ease-in-out;
+    transform: translateX(50%) translateY(-100%);
+    z-index: 100;
 }
