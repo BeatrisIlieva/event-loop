@@ -6,22 +6,27 @@ function executeCode() {
     }, 0);
 
     setTimeout(() => {
-        console.log('2 seconds later');
-    }, 2000);
+        console.log('3 seconds later');
+    }, 3000);
 
-    console.log('3 seconds later');
+    setTimeout(() => {
+        console.log('4 seconds later');
+    }, 4000);
 
-    return console.log('End');
+    console.log('End');
 }
 
 function zeroSecondsLater() {
     oneSecondLater();
-
-    return console.log('0 seconds later');
+    twoSecondsLater();
 }
 
 function oneSecondLater() {
-    return console.log('1 second later');
+    console.log('1 second later');
+}
+
+function twoSecondsLater() {
+    console.log('2 seconds later');
 }
 
 executeCode();

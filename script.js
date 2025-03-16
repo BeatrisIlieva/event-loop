@@ -1,19 +1,13 @@
 const logResults = [
     'Start',
-    '3 seconds later',
+    '2 seconds later',
     'End',
-    '1 second later',
+    '4 second later',
     '0 seconds later',
-    '2 seconds later'
+    '1 second later'
 ];
 
 const contexts = [
-    "console.log('Start');",
-    'zeroSecondsLater();',
-    "console.log('2 seconds later');",
-    "console.log('3 seconds later');",
-    "console.log('End');",
-    'oneSecondLater();',
     "console.log('0 seconds later');",
     "console.log('1 second later');"
 ];
@@ -260,26 +254,48 @@ codeElement.textContent = `function executeCode() {
     }, 0);
 
     setTimeout(() => {
-        console.log('2 seconds later');
-    }, 2000);
+        console.log('3 seconds later');
+    }, 3000);
 
-    console.log('3 seconds later');
+    setTimeout(() => {
+        console.log('4 seconds later');
+    }, 4000);
 
-    return console.log('End');
+    console.log('End');
 }
 
 function zeroSecondsLater() {
     oneSecondLater();
-
-    return console.log('0 seconds later');
+    twoSecondsLater();
 }
 
 function oneSecondLater() {
-    return console.log('1 second later');
+    console.log('1 second later');
 }
 
-executeCode();
+function twoSecondsLater() {
+    console.log('2 seconds later');
+}
 
-`;
+executeCode();`;
 
 Prism.highlightElement(codeElement);
+
+const mainThreadContexts = [
+    "console.log('Start');",
+    `setTimeout(() => {
+    zeroSecondsLater();
+}, 0);`,
+    `setTimeout(() => {
+    console.log('3 seconds later');
+}, 3000);`,
+    `setTimeout(() => {
+    console.log('4 seconds later');
+}, 4000);`,
+    "console.log('End');"
+];
+
+mainThreadContexts.forEach(element => {
+    const liElement = createPreElement(element);
+    callstackUlElement.append(liElement);
+});
