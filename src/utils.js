@@ -193,9 +193,13 @@ executeCode();`;
 
 Prism.highlightElement(codeElement);
 
-mainThreadContexts.forEach(element => {
-    const liElement = document.createElement('li');
-    liElement.append(createPreElement(element));
+export function populateCallstack() {
+    mainThreadContexts.forEach(element => {
+        const liElement = document.createElement('li');
+        liElement.append(createPreElement(element));
 
-    callstackUlElement.append(liElement);
-});
+        callstackUlElement.append(liElement);
+    });
+}
+
+populateCallstack();

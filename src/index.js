@@ -13,12 +13,14 @@ import {
     removeFromCallstack,
     moveToBrowserApi,
     moveToEventQueue,
-    updateResult
+    updateResult,
+    populateCallstack
 } from './utils.js';
 
 import {
     callstackUlElement,
-    containerLoopElement
+    containerLoopElement,
+    resultUlElement
 } from './elements.js';
 
 const actions = {
@@ -43,10 +45,26 @@ const actions = {
     18: eighteenthAction
 };
 
+const userActionButtonElement = document.querySelector(
+    '.user-action button'
+);
+
 function clickHandler() {
     let currentAction = 0;
 
     return function execute() {
+        if (userActionButtonElement.textContent == 'Start Again') {
+            currentAction = 0;
+
+            userActionButtonElement.textContent = 'Execute';
+
+            populateCallstack();
+
+            resultUlElement.innerHTML = '';
+
+            return;
+        }
+
         actions[currentAction]();
 
         currentAction += 1;
@@ -54,10 +72,6 @@ function clickHandler() {
 }
 
 const execute = clickHandler();
-
-const userActionButtonElement = document.querySelector(
-    '.user-action button'
-);
 
 userActionButtonElement.addEventListener('click', execute);
 
@@ -177,7 +191,7 @@ function eighteenthAction() {
     updateResult(5);
     removeFromCallstack();
 
-    userActionButtonElement.textContent = 'Start again';
+    userActionButtonElement.textContent = 'Start Again';
 }
 
 const idleElement = document.querySelector('.idle');
