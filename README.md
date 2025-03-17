@@ -1,32 +1,32 @@
 # Event Loop Visualization Project
 
-## 📌 Table of Contents  
-
-- [🚀 Overview](#-overview)  
-- [📖 Full Explanation](#-full-explanation)  
-- [🎮 How It Works](#-how-it-works)  
-- [🛠️ Code Explanation](#-code-explanation)  
-- [🎨 Visual Process](#-visual-process)  
-- [🎯 Conclusion](#-conclusion)  
-
-🔗 **Live Demo**: [Click Here](https://beatrisilieva.github.io/event-loop)  
+🔗 **Live Demo**: https://beatrisilieva.github.io/event-loop 
 
 🎥 **Demo Video**: 
 [![Watch the video](https://img.youtube.com/vi/LX0Mky7DvFc/maxresdefault.jpg)](https://www.youtube.com/watch?v=LX0Mky7DvFc)
 
-## 🚀 Overview 
+## 📌 Table of Contents  
+
+- [Overview](#overview)  
+- [Full Explanation](#full-explanation)  
+- [How It Works](#how-it-works)  
+- [Code Explanation](#code-explanation)  
+- [Visual Process](#visual-process)  
+- [Conclusion](#conclusion)
+  
+## Overview 
 
 The **Event Loop Visualization project** is an interactive tool that helps learners understand the JavaScript **Event Loop**. The unique feature of this project is that users can interact with the event loop process by **moving functions between the call stack**, delegating them to the **Browser**, and then transferring them back from the **Event Queue** to the call stack.
 
 Each step of the event loop process is visually represented, with **descriptions provided at every stage** to explain what is happening. This project helps users grasp how **synchronous** and **asynchronous** code execution works in JavaScript.
 
-## 📖 Full Explanation
+## Full Explanation
 
 For a detailed explanation of the Event Loop and how this visualization works, check out the full article on Dev.to:
 
 🔗 [Understanding the Event Loop: The Heart of Asynchronous JavaScript](your-article-link-here)
 
-## 🎮 How It Works
+## How It Works
 
 In this interactive visualization, users can click to:
 
@@ -40,7 +40,7 @@ In this interactive visualization, users can click to:
 
 This simulation allows users to visually follow the **event-driven execution flow** of JavaScript.
 
-## 🛠️ Code Explanation
+## Code Explanation
 
 ### `executeCode` Function
 
@@ -91,7 +91,7 @@ function twoSecondsLater() {
 
 -   **Synchronous Logs**: `oneSecondLater` and `twoSecondsLater` are executed immediately once `zeroSecondsLater` is invoked.
 
-### 🎨 Visual Process
+### Visual Process
 
 1. **Call Stack**: Initially, the synchronous code (e.g., `console.log('Start')` and `console.log('End')`) is pushed onto the call stack and executed immediately.
 
@@ -99,6 +99,6 @@ function twoSecondsLater() {
 
 3. **User Interaction**: Users can visually move functions between the call stack, browser, and event queue by clicking. As the functions are moved, **step-by-step descriptions** of each action will be displayed, helping users understand the event loop mechanism in real-time.
 
-## 🎯 Conclusion
+## Conclusion
 
 This interactive visualization helps demystify the **JavaScript Event Loop**, offering an engaging way to understand **synchronous** and **asynchronous** code execution. By allowing users to control the flow of the event loop and view each step, it provides a deeper understanding of how JavaScript manages function execution, event delegation, and timing.
