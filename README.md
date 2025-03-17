@@ -22,7 +22,7 @@ Each step of the event loop process is visually represented, with **descriptions
 
 ## Full Explanation
 
-For a detailed explanation of the Event Loop and how this visualization works, check out the full article on Dev.to:
+For a detailed explanation of how this visualization works, check out the full article on Dev.to:
 
 🔗 [Understanding the Event Loop: The Heart of Asynchronous JavaScript](your-article-link-here)
 
