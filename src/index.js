@@ -246,3 +246,27 @@ function watchBrowserApiChildren() {
 }
 
 watchBrowserApiChildren();
+
+const eventQueueUlElement = document.querySelector('.event-queue ul');
+
+function watchEventQueueChildren() {
+    const observer = new MutationObserver(() => {
+        const eventQueueSectionElementLength =
+            eventQueueUlElement.querySelectorAll('li').length;
+
+        const eventQueueSectionElement =
+            eventQueueUlElement.closest('section');
+
+        if (eventQueueSectionElementLength > 0) {
+            eventQueueSectionElement.classList.add('active');
+        } else {
+            eventQueueSectionElement.classList.remove('active');
+        }
+    });
+
+    observer.observe(eventQueueUlElement, { childList: true });
+
+    return observer;
+}
+
+watchEventQueueChildren();

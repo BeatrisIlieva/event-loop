@@ -80,7 +80,7 @@ h2 {
     background: #fcfdcd;
     border-radius: 0.3em;
     padding: 0.2em 0;
-    box-shadow: 0 0 0.6em 0 rgb(0,0,0,0.1);
+    box-shadow: 0 0 0.6em 0 rgb(0, 0, 0, 0.1);
 }
 
 .callstack,
@@ -106,22 +106,28 @@ h2 {
     text-align: center;
 }
 
-.callstack {
-    width: 22.5rem;
-    background: #cff1fb78;
-    border: 0.3em solid #cff1fb;
-}
-
 .container-right {
     width: 30rem;
 }
 
-.browser-api {
-    flex: 1 1 auto;
+.callstack,
+.browser-api,
+.event-queue {
     background: #cff1fb78;
     border: 0.3em solid #cff1fb;
-    /* background: #d6fbe462;
-    border: 0.3em solid #d6fbe4; */
+    transition: background 0.4s ease-in-out border 0.4s ease-in-out;
+}
+
+.callstack {
+    width: 22.5rem;
+    height: 64dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.browser-api {
+    flex: 1 1 auto;
 }
 
 .event-queue {
@@ -129,22 +135,12 @@ h2 {
     display: flex;
     flex-direction: column;
     height: 22dvh;
-    background: #cff1fb78;
-    border: 0.3em solid #cff1fb;
-    /* background: #fcfdcd96;
-    border: 0.3em solid #fcfdcd; */
 }
 
 .active {
     background: #d6fbe462;
     border: 0.3em solid #d6fbe4;
-}
-
-.callstack {
-    height: 64dvh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    transition: background 0.4s ease-in-out border 0.4s ease-in-out;
 }
 
 .container-middle {
