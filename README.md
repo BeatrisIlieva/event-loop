@@ -11,6 +11,12 @@ The **Event Loop Visualization project** is an interactive tool that helps learn
 
 Each step of the event loop process is visually represented, with **descriptions provided at every stage** to explain what is happening. This project helps users grasp how **synchronous** and **asynchronous** code execution works in JavaScript.
 
+## 📖 Full Explanation
+
+For a detailed explanation of the Event Loop and how this visualization works, check out the full article on Dev.to:
+
+🔗 [Understanding the Event Loop: The Heart of Asynchronous JavaScript](your-article-link-here)
+
 ## How It Works
 
 In this interactive visualization, users can click to:
@@ -84,6 +90,6 @@ function twoSecondsLater() {
 
 3. **User Interaction**: Users can visually move functions between the call stack, browser, and event queue by clicking. As the functions are moved, **step-by-step descriptions** of each action will be displayed, helping users understand the event loop mechanism in real-time.
 
-### Conclusion
+## Conclusion
 
 This interactive visualization helps demystify the **JavaScript Event Loop**, offering an engaging way to understand **synchronous** and **asynchronous** code execution. By allowing users to control the flow of the event loop and view each step, it provides a deeper understanding of how JavaScript manages function execution, event delegation, and timing.
