@@ -1,5 +1,10 @@
 # Event Loop Visualization Project
 
+##### Visit at: https://beatrisilieva.github.io/event-loop
+
+### Demo video:
+[![Watch the video](https://img.youtube.com/vi/LX0Mky7DvFc/maxresdefault.jpg)](https://www.youtube.com/watch?v=LX0Mky7DvFc)
+
 ## Overview
 
 The **Event Loop Visualization project** is an interactive tool that helps learners understand the JavaScript **Event Loop**. The unique feature of this project is that users can interact with the event loop process by **moving functions between the call stack**, delegating them to the **Browser**, and then transferring them back from the **Event Queue** to the call stack.
