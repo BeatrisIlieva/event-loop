@@ -2,7 +2,7 @@ export const callstackUlElement =
     document.querySelector('.callstack ul');
 
 export const resultUlElement =
-    document.querySelector('.user-action ol');
+    document.querySelector('.result ol');
 
 export const browserApiUlElement =
     document.querySelector('.browser-api ul');

@@ -193,19 +193,26 @@ function eighteenthAction() {
 
     userActionButtonElement.textContent = 'Start Again';
 }
+const callstackSectionElement = document.querySelector('.callstack');
+callstackSectionElement.classList.add('active');
 
 const idleElement = document.querySelector('.idle');
+
 function watchCallstackChildren() {
     const observer = new MutationObserver(() => {
         const callstackUlElementLength =
             callstackUlElement.querySelectorAll('li').length;
 
         if (callstackUlElementLength > 0) {
+            callstackSectionElement.classList.add('active');
+
             containerLoopElement.classList.remove('rotated');
             idleElement.classList.remove('visible');
         } else {
             containerLoopElement.classList.add('rotated');
             idleElement.classList.add('visible');
+
+            callstackSectionElement.classList.remove('active');
         }
     });
 
@@ -215,3 +222,27 @@ function watchCallstackChildren() {
 }
 
 watchCallstackChildren();
+
+const browserApiUlElement = document.querySelector('.browser-api ul');
+
+function watchBrowserApiChildren() {
+    const observer = new MutationObserver(() => {
+        const browserApiSectionElementLength =
+            browserApiUlElement.querySelectorAll('li').length;
+
+        const browserApiSectionElement =
+            browserApiUlElement.closest('section');
+
+        if (browserApiSectionElementLength > 0) {
+            browserApiSectionElement.classList.add('active');
+        } else {
+            browserApiSectionElement.classList.remove('active');
+        }
+    });
+
+    observer.observe(browserApiUlElement, { childList: true });
+
+    return observer;
+}
+
+watchBrowserApiChildren();

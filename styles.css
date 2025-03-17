@@ -39,7 +39,7 @@ ul {
 }
 
 pre[class*='language-'] {
-    padding: 1em !important;
+    padding: 0.6em !important;
     margin: 0 !important;
     overflow: auto;
     font-size: 0.88em !important;
@@ -75,8 +75,12 @@ main {
 
 h2 {
     font-size: 1.2em;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     font-weight: 700;
+    background: #fcfdcd;
+    border-radius: 0.3em;
+    padding: 0.2em 0;
+    box-shadow: 0 0 0.6em 0 rgb(0,0,0,0.1);
 }
 
 .callstack,
@@ -103,7 +107,7 @@ h2 {
 }
 
 .callstack {
-    width: 22rem;
+    width: 22.5rem;
     background: #cff1fb78;
     border: 0.3em solid #cff1fb;
 }
@@ -114,21 +118,30 @@ h2 {
 
 .browser-api {
     flex: 1 1 auto;
-    background: #d6fbe462;
-    border: 0.3em solid #d6fbe4;
+    background: #cff1fb78;
+    border: 0.3em solid #cff1fb;
+    /* background: #d6fbe462;
+    border: 0.3em solid #d6fbe4; */
 }
 
 .event-queue {
     overflow-x: auto;
     display: flex;
     flex-direction: column;
-    height: 20dvh;
-    background: #fcfdcd96;
-    border: 0.3em solid #fcfdcd;
+    height: 22dvh;
+    background: #cff1fb78;
+    border: 0.3em solid #cff1fb;
+    /* background: #fcfdcd96;
+    border: 0.3em solid #fcfdcd; */
+}
+
+.active {
+    background: #d6fbe462;
+    border: 0.3em solid #d6fbe4;
 }
 
 .callstack {
-    height: 70dvh;
+    height: 64dvh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -141,20 +154,8 @@ h2 {
     justify-content: space-between;
 }
 
-.container-loop {
-    display: flex;
-    gap: 3.4em;
-    justify-content: center;
-    transform: rotate(180deg);
-    transition: transform 0.6s ease-in-out;
-    margin-top: 2.6em;
-}
-
 .event-loop h2 {
-    margin-bottom: 1.6em;
-    text-decoration: underline;
-    text-decoration-color: #00c13e;
-    text-underline-offset: 0.18em;
+    margin-bottom: 2em;
 }
 
 .callstack {
@@ -182,6 +183,15 @@ h2 {
     border-radius: 50%;
     color: #00c13e;
     background: linear-gradient(135deg, #aff474, #e5f7a3);
+}
+
+.container-loop {
+    display: flex;
+    gap: 3em;
+    justify-content: center;
+    transform: rotate(180deg);
+    transition: transform 0.6s ease-in-out;
+    margin-bottom: 0.5em;
 }
 
 .container-loop.rotated {
@@ -230,11 +240,13 @@ h2 {
 
 .result {
     background: #d1d1f922;
-    margin: 1.4em 0;
     border-radius: 0.3em;
     flex-grow: 1;
     padding: 0.6em;
     border: 0.3em solid #d1d1f9;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .result h3 {
@@ -247,18 +259,6 @@ h2 {
 
 .user-action ol {
     gap: 0.4em;
-}
-
-.explanation {
-    padding: 0.8em;
-    background: #ffdbdb52;
-    flex-grow: 1;
-    border: 0.3em solid #ffdbdb;
-    border-radius: 0.3em;
-}
-
-.explanation h2 {
-    text-align: center;
 }
 
 button {
