@@ -11,6 +11,26 @@
     color: inherit;
 }
 
+html {
+    box-sizing: border-box;
+    font: clamp(14px, 8px + 0.45dvw, 20px) / 1.5 'Lato', sans-serif;
+    color: #000;
+}
+
+body {
+    min-height: 100dvh;
+    align-items: center;
+    display: flex;
+}
+
+main {
+    padding: 1rem
+        clamp(2dvh, calc((100dvw - 1360px) / 2), calc(100dvw / 2));
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
 li {
     transition: opacity 0.5s ease-in-out;
 }
@@ -53,26 +73,6 @@ pre[class*='language-'] {
     width: fit-content !important;
 }
 
-html {
-    box-sizing: border-box;
-    font: clamp(14px, 8px + 0.45dvw, 20px) / 1.5 'Lato', sans-serif;
-    color: #000;
-}
-
-body {
-    min-height: 100dvh;
-    align-items: center;
-    display: flex;
-}
-
-main {
-    padding: 1em
-        clamp(2dvh, calc((100dvw - 1360px) / 2), calc(100dvw / 2));
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
 h2 {
     font-size: 1.2em;
     margin-bottom: 1em;
@@ -107,7 +107,7 @@ h2 {
 }
 
 .container-right {
-    width: 30rem;
+    width: 29rem;
 }
 
 .callstack,
@@ -120,7 +120,7 @@ h2 {
 
 .callstack {
     width: 22.5rem;
-    height: 64dvh;
+    height: 30rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -134,7 +134,7 @@ h2 {
     overflow-x: auto;
     display: flex;
     flex-direction: column;
-    height: 22dvh;
+    height: 10rem;
 }
 
 .active {
@@ -243,14 +243,17 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    position: relative;
 }
 
 .result h3 {
-    text-align: center;
     font-weight: 700;
-    margin-bottom: 1em;
-    text-decoration: underline;
-    text-underline-offset: 0.18em;
+    transform: rotate(90deg);
+    position: absolute;
+    top: 3.4em;
+    right: -0.8em;
+    font-size: 1.4em;
+    color: #8f4fb5;
 }
 
 .user-action ol {

@@ -193,6 +193,7 @@ function eighteenthAction() {
 
     userActionButtonElement.textContent = 'Start Again';
 }
+
 const callstackSectionElement = document.querySelector('.callstack');
 callstackSectionElement.classList.add('active');
 
