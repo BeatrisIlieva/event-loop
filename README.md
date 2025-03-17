@@ -1,5 +1,14 @@
 # Event Loop Visualization Project
 
+## 📌 Table of Contents  
+
+- [🚀 Overview](#-overview)  
+- [📖 Full Explanation](#-full-explanation)  
+- [🎮 How It Works](#-how-it-works)  
+- [🛠️ Code Explanation](#-code-explanation)  
+- [🎨 Visual Process](#-visual-process)  
+- [🎯 Conclusion](#-conclusion)  
+
 ##### Visit at: https://beatrisilieva.github.io/event-loop
 
 ### Demo video:
